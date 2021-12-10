@@ -11,7 +11,7 @@ import qrcode
 import json
 from typing import Union, Optional
 from PIL import Image
-from pyzbar.pyzbar import decode
+# from pyzbar.pyzbar import decode
 from pydantic import validate_arguments
 import validators
 from datetime import datetime
@@ -82,26 +82,26 @@ class Fatoora:
         )
         return dict(zip(keys, values))
 
-    @classmethod
-    def read_qrcode(
-        cls, filename: str, dct: bool = False
-    ) -> Optional[Union[str, dict]]:
-        """read content of qr code
+    # @classmethod
+    # def read_qrcode(
+    #     cls, filename: str, dct: bool = False
+    # ) -> Optional[Union[str, dict]]:
+    #     """read content of qr code
 
-        Args:
-            filename (str): qr code path
-            dct (bool, optional): True -> return dict of content
-                                False -> return base64 of content or url. Defaults to False.
+    #     Args:
+    #         filename (str): qr code path
+    #         dct (bool, optional): True -> return dict of content
+    #                             False -> return base64 of content or url. Defaults to False.
 
-        Returns:
-            Optional[Union[str, dict]]: content of qr code
-        """
-        data = decode(Image.open(filename))[0].data.decode()
+    #     Returns:
+    #         Optional[Union[str, dict]]: content of qr code
+    #     """
+    #     data = decode(Image.open(filename))[0].data.decode()
 
-        if dct:
-            return cls.base2dict(data)
-        else:
-            return data
+    #     if dct:
+    #         return cls.base2dict(data)
+    #     else:
+    #         return data
 
     @property
     def seller_name(self) -> str:
